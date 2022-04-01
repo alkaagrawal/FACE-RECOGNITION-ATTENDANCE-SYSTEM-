@@ -1,4 +1,3 @@
-############################################# IMPORTING ################################################
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as mess
@@ -11,26 +10,18 @@ import pandas as pd
 import datetime
 import time
 
-############################################# FUNCTIONS ################################################
-
 def assure_path_exists(path):
     dir = os.path.dirname(path)
     if not os.path.exists(dir):
         os.makedirs(dir)
-
-##################################################################################
 
 def tick():
     time_string = time.strftime('%H:%M:%S')
     clock.config(text=time_string)
     clock.after(200,tick)
 
-###################################################################################
-
 def contact():
-    mess._show(title='Contact us', message="Please contact us on : 'shubhamkumar8180323@gmail.com' ")
-
-###################################################################################
+    mess._show(title='Contact us', message="Please contact us on : 'alkaagrawal192@gmail.com' ")
 
 def check_haarcascadefile():
     exists = os.path.isfile("haarcascade_frontalface_default.xml")
@@ -39,8 +30,6 @@ def check_haarcascadefile():
     else:
         mess._show(title='Some file missing', message='Please contact us for help')
         window.destroy()
-
-###################################################################################
 
 def save_pass():
     assure_path_exists("TrainingImageLabel/")
@@ -74,8 +63,6 @@ def save_pass():
     mess._show(title='Password Changed', message='Password changed successfully!!')
     master.destroy()
 
-###################################################################################
-
 def change_pass():
     global master
     master = tk.Tk()
@@ -104,8 +91,6 @@ def change_pass():
     save1.place(x=10, y=120)
     master.mainloop()
 
-#####################################################################################
-
 def psw():
     assure_path_exists("TrainingImageLabel/")
     exists1 = os.path.isfile("TrainingImageLabel\psd.txt")
@@ -129,7 +114,6 @@ def psw():
     else:
         mess._show(title='Wrong Password', message='You have entered wrong password')
 
-######################################################################################
 
 def clear():
     txt.delete(0, 'end')
@@ -141,8 +125,6 @@ def clear2():
     txt2.delete(0, 'end')
     res = "1)Take Images  >>>  2)Save Profile"
     message1.configure(text=res)
-
-#######################################################################################
 
 def TakeImages():
     check_haarcascadefile()
@@ -204,8 +186,6 @@ def TakeImages():
             res = "Enter Correct name"
             message.configure(text=res)
 
-########################################################################################
-
 def TrainImages():
     check_haarcascadefile()
     assure_path_exists("TrainingImageLabel/")
@@ -222,8 +202,6 @@ def TrainImages():
     res = "Profile Saved Successfully"
     message1.configure(text=res)
     message.configure(text='Total Registrations till now  : ' + str(ID[0]))
-
-############################################################################################3
 
 def getImagesAndLabels(path):
     # get the path of all the files in the folder
@@ -244,8 +222,6 @@ def getImagesAndLabels(path):
         faces.append(imageNp)
         Ids.append(ID)
     return faces, Ids
-
-###########################################################################################
 
 def TrackImages():
     check_haarcascadefile()
@@ -328,8 +304,6 @@ def TrackImages():
     csvFile1.close()
     cam.release()
     cv2.destroyAllWindows()
-
-######################################## USED STUFFS ############################################
     
 global key
 key = ''
